@@ -1,5 +1,6 @@
 import Pizza from "./Pizza";
-
+import React from "react";
+import "./index.css";
 const pizzaData = [
   {
     name: "Focaccia",
@@ -47,10 +48,44 @@ const pizzaData = [
 
 function App() {
   return (
-    <div>
-      <Pizza />
+    <div className="container">
+      <Header />
+      <Menu />
+      <Footer />
     </div>
   );
 }
+function Header() {
+  return (
+    <header style={{ color: "red ", fontSize: "32px" }}>
+      Fast React Pizza
+    </header>
+  );
+}
 
+function Menu() {
+  return (
+    <main className="menu">
+      <h3> Check Our Menu</h3>
+      <Pizza />
+    </main>
+  );
+}
+
+function Footer() {
+  const hour = new Date().getHours();
+  console.log(hour);
+  const openHour = 12;
+  const closeHour = 22;
+  const isOpen = hour >= openHour && hour <= closeHour;
+  //if (hour >= openHour && hour <= closeHour) alert("We are open!");
+  //else alert("We are closed");
+  return (
+    <footer className="footer">
+      {new Date().toLocaleTimeString()} We are currently open!
+    </footer>
+  );
+
+  //React.createElement("footer", null, "We're currently open!");
+}
 export default App;
